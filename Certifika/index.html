@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifika | Verifiable Credential Wallet</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #000000;
+  --titanium: #E0E0E0;
+  --cyber-red: #FF003C;
+  --hazard: #1A1A1A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--void);
+  color: var(--titanium);
+  font-family: 'Syne', system-ui;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+header {
+  text-align: center; margin-bottom: 60px;
+}
+header h1 {
+  font-size: 3.2rem; font-weight: 800; letter-spacing: -0.04em;
+}
+header .subtitle {
+  font-family: 'DM Mono'; color: #777; font-size: 1.1rem; margin-top: 12px;
+}
+
+.verify-container {
+  max-width: 860px; margin: 0 auto; background: #0a0a0a; border: 2px solid #222; padding: 48px;
+}
+.qr-area {
+  text-align: center; margin: 40px 0;
+}
+.qr-placeholder {
+  width: 280px; height: 280px; margin: 0 auto; background: #111; border: 2px solid var(--cyber-red);
+  display: flex; align-items: center; justify-content: center; font-family: 'DM Mono'; font-size: 1.1rem;
+  position: relative; overflow: hidden;
+}
+.qr-placeholder::after {
+  content: 'SCAN TO VERIFY'; position: absolute; bottom: 20px; font-size: 0.8rem; color: var(--cyber-red);
+  letter-spacing: 0.15em;
+}
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 4px; background: linear-gradient(transparent, var(--cyber-red), transparent);
+  box-shadow: 0 0 25px var(--cyber-red); animation: scan 2.8s linear infinite;
+}
+@keyframes scan { 0% { top: -20px; } 100% { top: 100%; } }
+
+.status-bar {
+  margin-top: 30px; padding: 16px 24px; background: #111; border-left: 4px solid var(--cyber-red);
+  font-family: 'DM Mono'; font-size: 0.95rem;
+}
+.btn-verify {
+  margin-top: 40px; padding: 16px 40px; background: var(--cyber-red); color: #000; border: none;
+  font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; cursor: pointer; width: 100%;
+  transition: all 0.3s;
+}
+.btn-verify:hover { background: #ff3366; transform: scale(1.02); }
+
+footer { text-align: center; margin-top: 80px; font-family: 'DM Mono'; color: #555; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CERTIFIKA</h1>
+  <div class="subtitle">Verifiable Credential Wallet • Cryptographic Trust Layer</div>
+</header>
+
+<div class="verify-container">
+  <h2 style="font-size:1.8rem; margin-bottom:24px;">Deep Credential Verification</h2>
+  <p style="color:#aaa; line-height:1.7;">Scan the QR code or enter the credential fingerprint to instantly verify authenticity against the immutable ledger.</p>
+
+  <div class="qr-area">
+    <div class="qr-placeholder">
+      <div class="scan-line"></div>
+      <div style="color:#555; text-align:center;">
+        [ QR CODE PLACEHOLDER ]<br>
+        <small>Compact Base45 Payload</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <strong>Status:</strong> <span style="color:#00cc88;">VERIFIED • HASH MATCH</span><br>
+    Issuer: HP Foundation + T⁴Tech Node<br>
+    Issued: April 2026 • Expires: April 2028<br>
+    Fingerprint: SHA256-HMAC verified on-chain
+  </div>
+
+  <button class="btn-verify" onclick="simulateVerification()">VERIFY CREDENTIAL</button>
+</div>
+
+<footer>
+  Built by Tefo Radebe • T⁴Tech Solutions • Power Platform + Cryptography<br>
+  <a href="../" style="color:var(--cyber-red); text-decoration:none;">← Back to Portfolio</a>
+</footer>
+
+<script>
+function simulateVerification() {
+  const btn = document.querySelector('.btn-verify');
+  btn.textContent = 'VERIFYING ON LEDGER...';
+  btn.style.background = '#333';
+  
+  setTimeout(() => {
+    btn.textContent = '✓ VERIFIED SUCCESSFULLY';
+    btn.style.background = '#00cc88';
+    btn.style.color = '#000';
+  }, 1650);
+}
+</script>
+</body>
+    </html>
